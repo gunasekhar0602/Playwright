@@ -39,4 +39,33 @@ await page.goto("https://testautomationpractice.blogspot.com/");
         console.log(text);
     }
 
+
+// 4) Read all data from the table (excluding header)
+    console. 10g（'Printing all Table Data.......'）；
+
+    // all returns array of locators  // get all row locators
+    const allRowData=await rows.all(); 
+    console.log( "BookName Author subject price");
+    for (let row of allRowData.slice(1)) // slice(1) --> skip header row
+    {
+        const cols=await row.locator('td'). allInnerTexts();
+        console.log(cols.join('\t'));
+    }
+
+
+
+// 5) Print book names where author is Mukesh
+    console. log("Books written by Mukesh...")
+    const mukeshBooks: string[]=[];
+        for (let row of allRowData.slice(1)) // slice(1) --> skip header row
+        const cells=await row. locator('td'). allInnerTexts();
+        const author=cells [1]; const book=ce11s[0];
+        if(author ===' Mukesh')
+        {
+            console.log('$(author} \t ${book})
+            mukeshBooks.push (book);
+        }
+    expect(mukeshBooks).tohavelenght(2)
+    
+
 })
