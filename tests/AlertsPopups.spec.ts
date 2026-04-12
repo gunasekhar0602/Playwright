@@ -45,3 +45,27 @@ test.only("Confirmation Dialog",async ({page})=>
     await expect(page. locator ("#demo")) . toHaveText ("You pressed OK!");
     await page. waitForTimeout (5000);
 })
+
+
+
+
+test.only( "Prompt Dialog",async ({page}) =>
+{
+    await page.goto('https://testautomationpractice.blogspot.com/');
+// Register a dialog handler
+    page.on(' dialog', (dialog) => 
+    {
+        console.log("Dialog type is:",dialog.type()); // returns type of the dialog 
+        expect (dialog.type()). toContain('prompt');
+        console.log("Dialog Text:", dialog message()); // returns message from dialog 
+        expect (dialog.message()).toContain("Please enter your name:");
+        expect (dialog.defaultValue()) .toContain("Harry Potter"); // checks default value of the dialog
+        dialog.accept('John'); // close dialog by accepting
+    }) ;
+    await page. locator("#promptBtn").click(); // Opens Prompt dialog
+    
+    const text: string=await page. locator('#demo"). innerText() ;
+    console.log("Output text:", text) ;
+    await expect (page. locator ("#demo")) toHaveText ("Hello John! How are you today?"); 
+    await page. waitForTimeout (5000);
+})
