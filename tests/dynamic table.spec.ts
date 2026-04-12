@@ -22,4 +22,16 @@ test("Verify Chrome CPU load in dynamic table", async({page}) =>
         break;
     }
 }
+
+
+
+//Step2: Compare it with value in the yellow label.
+let yellowboxtext: string=await page. locator "#chrome-cpu"). innerText() ; 
+console.log("Chrome CPU load from yellow box:", yellowboxtext );
+if(yellowboxtext.includes(cpuLoad))
+console. 1og("CPU load of Chrome is equal. ");
+}else{
+console.log("CPU load of Chrome is Not equal.");
+expect (yellowboxtext). toContain(cpuLoad);
+await page.waitForTimeout(5000);
 })
