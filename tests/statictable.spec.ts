@@ -65,7 +65,7 @@ await page.goto("https://testautomationpractice.blogspot.com/");
             console.log('$(author} \t ${book})
             mukeshBooks.push (book);
         }
-    expect(mukeshBooks).tohavelenght(2)
+    expect(mukeshBooks).tohavelength(2)
     
 
 })
