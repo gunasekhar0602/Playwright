@@ -111,5 +111,43 @@ test. only("Drag and drop", async ({page}) =>
 
 
 
+//5. Mouse Down – page.mouse.down()
+ 
+//Purpose: To press and hold the mouse button down (without releasing it).
+ 
+//Syntax: await page.mouse.down();
+ 
+Example:
+ 
+await page.mouse.move(100, 200); // move to a position
+await page.mouse.down(); // press mouse button
+
+
+
+
+
+//6. Mouse Up – page.mouse.up()
+
+//Purpose:To release the mouse button (after a mouse down).
+ 
+//Syntax: await page.mouse.up();
+ 
+Example:
+
+await page.mouse.up(); // usually follows a mouse.down()
+ 
+ 
+ 
+//7. Mouse Move – page.mouse.move(x, y)
+ 
+//Purpose:To move the mouse to a specific position on the screen.
+ 
+// Syntax: await page.mouse.move(x, y);
+ 
+Example:
+ 
+await page.mouse.move(150, 300);
+
+
 
 
