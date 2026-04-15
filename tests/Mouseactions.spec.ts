@@ -94,7 +94,7 @@ test. only("Drag and drop", async ({page}) =>
     await page.waitForTimeout(5000);
 
 // approach 2)- drag and drop method
-    await intialele.drágTo(targetele);
+    await intialele.dragTo(targetele);
     await page.waitForTimeout(5000)
 
 })
