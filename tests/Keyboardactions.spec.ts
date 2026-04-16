@@ -130,7 +130,7 @@ test ("keyboard actions", async ({page}) =>
 
 
 
-Simple way
+// Simple way
 
 test. only("keyboard actions - simple way", async({page}) =>
 {
