@@ -76,5 +76,94 @@ await keyboard.type('Hello World!');
  
 await keyboard.insertText('Fast text input!');
  
- 
+
+
+
+
+
+
+
+import(test, expect, Locator} from"@playwright/test"
+test ("keyboard actions", async ({page}) =>
+{
+	await page.goto('https://testautomationpractice.blogspot.com/')
+// 1. focus on input 1
+	const submit1: Locator=page.locator('#input1')
+	await submit1. focus ()       OR        await submiti.click()
+
+// 2. Provide the input text
+	await page.keyboard. insertText ("Apple")
+
+// 3. Control A
+	await page. keyboard. down ('Control')
+	await page. keyboard. press ('A' ) 
+	await page. keyboard. up ("Control")
+
+// 4: Control C
+	await page. keyboard. down ('Control')
+	await page.keyboard. press('C")
+	await page. keyboard. up('Control')
+
+//5. Press the tab for two times
+	await page, keyboard. press("Tab');
+	await page. keyboard. press ('Tab' );
+
+//6. Control V - paste the data into second input 
+  await. page. keyboard. down ('Control')
+	await page.keyboard. press (V')
+	await page. keyboard. up( Control')
+
+//7. Press the tab for two times 
+	await page.keyboard. press ("Tab" )
+	await page. keyboard. press ("Tab")
+
+// 8. Control V - paste the data into third input
+	await page.keyboard. down ('Control')
+	await page. keyboard. press ('V')
+	await page.keyboard. up('Control')
+	await page. waitForTimeout (5000)
+});
+
+
+
+
+
+
+
+Simple way
+
+test. only("keyboard actions - simple way", async({page}) =>
+{
+	await page.goto(“https://testautomationpractice.blogspot.com/”)
+// 1. Focus on input 1
+	const1 submit1:Locator=page.locator(“#input1”)
+	await submit1.focus()            // or await submit.click()
+
+// 2. Provide the input text
+	await page.keyboard.insertText(“Apple”)
+
+// 3. Control A
+	await page.keyboard.press(“Control+A”)
+
+// 4. Control C
+	await page.keyboard.press(“Control+C”)
+
+// 5. Press the tab for two times
+	await page.keyboard.press(“Tab”)
+	await page.keyboard.press(“Tab”)
+
+// 6. Control V - paste the data into second input
+	await page.keyboard.press(Control+V)
+
+// 7. Press the tab for two times
+	await page.keyboard.press(“Tab”)
+	await page.keyboard.press(“Tab”)
+
+// 8. Control V - paste the data into second input
+	await page.keyboard.press(Control+V)
+	await page.waitforTimeout(5000)
+});
+
+
+
 
