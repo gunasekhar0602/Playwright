@@ -29,3 +29,30 @@ test('Single file upload', async ({page}) =>
 	await page. waitForTimeout (5000);
 
 });
+
+
+
+
+// 2. Uploading Multiple Files:
+ 
+await page.goto('https://example.com/upload');
+ 
+await page.locator('input[type="file"]').setInputFiles(['tests/files/sample1.txt',
+														'tests/files sample2.txt']);
+
+ 
+test.only('Multiple files upload', async({page})=>
+{
+	await page goto("https://testautomationpractice.blogspot.com/");
+	await page.locator('#multipleFilesInput').setInputFiles(['uploads/testfile1.pdf',
+															 'uploads/testfile2.pdf'])
+	await page. locator("button:has-text('Upload Multiple Files')"). click();
+	const msg=await page.locator('#multipleFilesStatus'). textContent();
+	expect (msg).toContain("testfilel.pdf");
+	expect (msg).toContain("testfile2.pdf");
+	console.log("files uploaded....”）
+	console.log(msg) ;
+	await page.waitForTimeout(5000);
+
+});
+
