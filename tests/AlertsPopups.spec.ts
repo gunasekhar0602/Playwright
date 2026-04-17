@@ -53,7 +53,7 @@ test.only( "Prompt Dialog",async ({page}) =>
 {
     await page.goto('https://testautomationpractice.blogspot.com/');
 // Register a dialog handler
-    page.on(' dialog', (dialog) => 
+    page.on('dialog', (dialog) => 
     {
         console.log("Dialog type is:",dialog.type()); // returns type of the dialog 
         expect (dialog.type()). toContain('prompt');
