@@ -1,71 +1,91 @@
 import { test, expect, Locator } from '@playwright/test';
-test("static web table",async ({page})=>
+test.only("static web table",async({page})=>
 {
-await page.goto("https://testautomationpractice.blogspot.com/");
-    const table:Locator= page. locator("table[name=' BookTable' ] tbody");
-    await expect (table). toBeVisible();
-  
-// 1) count number of rows in a table
-//returns all the rows including header 
-    const rows: Locator=page.locator("table[name= 'BookTable'] tbody tr");
-    await expect (rows) .toHaveCount(7); //7//approach 1
+    await page.goto("https://testautomationpractice.blogspot.com/");
+
+    // 1) Printing the details of the data of the table
+
+    // For getting table details locate the table element and extract the inner text
+    const tabledetails:string= await page.locator("//table[@name='BookTable' ]").innerText()
+
+    // For locating table
+    const table:Locator=page.locator("//table[@name='BookTable']")
+
+    await expect (table).toBeVisible();
+    console.log(tabledetails)
+
+
+    // 2) For counting number of rows in the table
+
+    // Locating tablerows locator
+    const tablerows:Locator= page.locator("//table[@name='BookTable']//tbody//tr");
+    await expect (tablerows).toHaveCount(7);
+
+    // From tablerows extract the count
+    const rowcount:number=await tablerows.count()
+    console.log("Rows on the table", rowcount)
+
+
+    // 3) For counting number of coloumns OR Headers in the table
+
+    // Locating tablecolumn locator
+    const tablecolumns:Locator=page.locator("//table[@name='BookTable']//tbody//th");
+
+    // From tablecolumns extract the count
+    const columncount:number=await tablecolumns.count();
+    console.log("Columns in the table", columncount);
+
+
+    // 4) Read all data from 2nd row
+
+    // Locating required row cells - Both are fine
+    //const secondrowdetails:Locator=tablerows.nth(2).locator('td')
+    const secondrowcells:Locator= page.locator("//table[@name='BookTable']//tbody//tr").nth(2).locator('td')
     
-    const rowCount :number=await rows.count);
-    console.log( "Number of rows in a table: ", rowcount); expect (rowCount). toBe(7); // appraoch 2
+    // Create a string and store the text of the cells in it
+    const secondrowtext:string[]=await secondrowcells.allTextContents();
 
+    console.log("Secondrowtext",secondrowtext);    // Array formate output
 
-// 2) count number of headers/columns
-//const columns:Locator= page.locator("table[name=' BookTable'] tbody tr th");
-
-    const columns:Locator= rows.locator("th");
-    await expect (columns). toHaveCount (4); //4 appraoch 1
-    
-    const columnCount:number=await columns.count();
-    console.log( "number of columns/headers: ", columnCount);
-    expect (columnCount).toBe(4); // appraoch 2
-
-
-// 3) Read all data from 2nd row (index 2 means 3rd row including header)
-
-    const secondRowcells:Locator=rows.nth(2).locator('td');
-    const secondRowTexts:string[]=await secondRowcells.allInnerTexts();
-    console. 1og("2nd Row data: ", secondRowTexts); //[ 'Learn Java', 'Mukesh', "Java', '500' ]
-
-    //assetion
-    await expect (secondRowCells). toHaveText([ 'Learn Java', 'Mukesh', 'Java','500']); 
-    console.1og("printing 2nd row data......")
-    for (let text of secondRowTexts)
+    for(let text of secondrowtext)
     {
-        console.log(text);
+        console.log(text)     // Normal formate output
     }
 
 
-// 4) Read all data from the table (excluding header)
-    console. 10g（'Printing all Table Data.......'）；
+    // 5) Read all data from the table
 
-    // all returns array of locators  // get all row locators
-    const allRowData=await rows.all(); 
-    console.log( "BookName Author subject price");
-    for (let row of allRowData.slice(1)) // slice(1) --> skip header row
+    // Get allrowdata   //All returns array of locators   //Get all row Locators
+    const allrowData= await tablerows.all();
+    console.log("BookName Author Subject Price");
+
+    for(let row of allrowData.slice(1))
     {
-        const cols=await row.locator('td'). allInnerTexts();
-        console.log(cols.join('\t'));
+        const cols=await row.locator('td').allInnerTexts()
+        console.log(cols.join('\t'))
     }
 
 
+    // 6) Print booknames where author is Mukesh
 
-// 5) Print book names where author is Mukesh
-    console. log("Books written by Mukesh...")
-    const mukeshBooks: string[]=[];
-        for (let row of allRowData.slice(1)) // slice(1) --> skip header row
-        const cells=await row. locator('td'). allInnerTexts();
-        const author=cells [1]; const book=ce11s[0];
-        if(author ===' Mukesh')
+    console.log("Books written by Mukesh");
+
+    // Create an array to store the books written by Mukesh
+    const Mukeshbooks:string[]=[];
+
+    for(let row of allrowData.slice(1))
+    {
+        // Getting inner text of all the rows
+        const cells=await row.locator('td').allInnerTexts();
+        // Dividing two coloumns
+        const auther=cells[1]; const book=cells[0];
+
+        if (auther==="Mukesh")
         {
-            console.log('$(author} \t ${book})
-            mukeshBooks.push (book);
-        }
-    expect(mukeshBooks).tohavelength(2)
-    
+            console.log(`${auther} \t ${book}`)
+            Mukeshbooks.push(book)
+        }  
+    }
+    expect(Mukeshbooks).toHaveLength(2)
 
 })
