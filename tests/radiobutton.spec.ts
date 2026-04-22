@@ -1,4 +1,5 @@
 import{test,expect,Locator}from'@playwright/test'
+
 test('radio button',async({page})=>
 {
     // Navigating to page
@@ -8,17 +9,13 @@ test('radio button',async({page})=>
     await expect(page).toHaveURL('https://testautomationpractice.blogspot.com/');
 
     // Assertion on the radio button buttons
-
     const malebutton:Locator=page.locator('//input[@id="male"]')
     await expect(malebutton).toBeVisible();
 
     const femalebutton:Locator=page.locator('//input[@id="female"]')
     await expect(femalebutton).toBeVisible();
 
-
     // Selecting the radio button
     await malebutton.check();
     await page.waitForTimeout(5000);
-
-
 })
