@@ -85,9 +85,10 @@ test.only("Infinite Scrolling", async({page})=>
         })
         console.log("Previous height:",previousHeight)
         console.log("current height:",currentHeight)
+		// if current height === previous height then break
         if(currentHeight===previousHeight)
         {
-            break;       // if current height === previous height then break
+            break;       
         }
         previousHeight=currentHeight;     // else assign previous height = current height
     }
