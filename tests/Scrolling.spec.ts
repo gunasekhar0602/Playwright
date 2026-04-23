@@ -52,7 +52,7 @@ test('Scrolling inside table', async({page})=>
 
 
 
-
+// Infinite Scrolling
 test.only("Infinite Scrolling", async({page})=>
 {
     test.slow(); // This will triple the default timeout of playwright
@@ -79,8 +79,7 @@ test.only("Infinite Scrolling", async({page})=>
         await page.evaluate(()=>{
             window.scrollTo(0,document.body.scrollHeight)
         })
-        await page.waitForTimeout(2000); // wait for new content to load
-		
+        await page.waitForTimeout(2000); // wait for new content to load	
 // evaluate will take an arrow function as Parameter. // Capture current height of the page
         const currentHeight=await page.evaluate(()=>{
             return document.body.scrollHeight;
