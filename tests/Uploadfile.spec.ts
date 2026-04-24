@@ -7,10 +7,8 @@
 //await page.locator('input[type="file"]').setInputFiles('path/to/file');
  
 //Example – Uploading a Single File:
-
 //await page.goto('https://example.com/upload');
 //await page.locator('input[type="file"]').setInputFiles('tests/files/sample1.txt');
-
 
 
 import {test,expect} from '@playwright/test'

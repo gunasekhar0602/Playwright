@@ -1,6 +1,6 @@
 import {test, expect, Locator, Page} from "@playwright/test"
 // this function should able to select both past and future date
-async function selectDate(tarYear:string,tarMonth:string,tardate:string,page:Page,isFuture:boolean)
+async function selectDate(tYear:string,tMonth:string,tdate:string,page:Page,isFuture:boolean)
 {            // Selecting Page fixture for await
     while(true)
     {
@@ -8,7 +8,7 @@ async function selectDate(tarYear:string,tarMonth:string,tardate:string,page:Pag
         const currentMonth=await page.locator("//span[@class='ui-datepicker-month']").textContent();
         const currentYear=await page.locator("//span[@class='ui-datepicker-year']").textContent();
         // If both currentMonth,month && currentYear,year are same will break the loop
-        if(currentMonth=== tarYear && currentYear===tarMonth)
+        if(currentMonth=== tYear && currentYear===tMonth)
         {
             break;
         }
@@ -32,7 +32,7 @@ async function selectDate(tarYear:string,tarMonth:string,tardate:string,page:Pag
     // create a variable to capture the inner text of date elements
         const datetext=await dt.innerText();
     // If both datetext and date are same means click on the dt and break the loop
-        if(datetext===tardate)
+        if(datetext===tdate)
         {
             await dt.click();
             break;

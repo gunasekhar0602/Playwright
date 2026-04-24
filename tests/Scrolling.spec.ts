@@ -52,7 +52,7 @@ test('Scrolling inside table', async({page})=>
 
 
 
-
+// Infinite Scrolling
 test.only("Infinite Scrolling", async({page})=>
 {
     test.slow(); // This will triple the default timeout of playwright
@@ -62,6 +62,7 @@ test.only("Infinite Scrolling", async({page})=>
 // document.body.scrollHeight - reprenting the end of the page
 // This the statement we need to execute multiple times till it reaches to end of the page
 // window.scrollTo(0,document.body.scrollHeight) - should mention inside evaluate function
+	
     let previousHeight=0; // We need to compare the current previousHeight and currentHeight
     let bookfound=false;   // Verifying the bookm is there OR not.
     while(true)
@@ -78,21 +79,24 @@ test.only("Infinite Scrolling", async({page})=>
         await page.evaluate(()=>{
             window.scrollTo(0,document.body.scrollHeight)
         })
-        await page.waitForTimeout(2000); // wait for new content to load
+        await page.waitForTimeout(2000); // wait for new content to load	
 // evaluate will take an arrow function as Parameter. // Capture current height of the page
         const currentHeight=await page.evaluate(()=>{
             return document.body.scrollHeight;
         })
         console.log("Previous height:",previousHeight)
         console.log("current height:",currentHeight)
+		
+		// if current height === previous height then break
         if(currentHeight===previousHeight)
         {
-            break;       // if current height === previous height then break
+            break;       
         }
         previousHeight=currentHeight;     // else assign previous height = current height
     }
     console.log('We reached end of the page')
-    
+
+	// if book not found
     if(!bookfound)
     {
         console.log('Book not found')
