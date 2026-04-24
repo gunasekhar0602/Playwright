@@ -15,7 +15,7 @@ test("Showdow DOM elements",async({page})=>
     // Locaagte the title of the books
     const Allbooks= await page.locator('h2.title').all();
 
-    // Print the length of books
+    // Print the length of books(Number of books)
     console.log(Allbooks.length);
     expect(Allbooks).toBe(20);
 
