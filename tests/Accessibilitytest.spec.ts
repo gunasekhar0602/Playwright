@@ -40,7 +40,8 @@ expect (accessibilityScanResults.violations.length).toEqual(0);
     // In general every element had different id
     // if there are any duplicare id it will retrun
     if wr want retrun violations other than duplicate it simply mention disable rules
-const accessibilityscanResults=await new AxeBuilder({page}) .disableRules(['duplicate-id']). analyze();
+const accessibilityscanResults=await new AxeBuilder({page}) 
+    .disableRules(['duplicate-id']). analyze();
 await testInfo.attach(' accessibility results',{
 body: JSON. stringify(accessibilityScanResults,null, 2), contentType: 'application/json'
 }) ;
