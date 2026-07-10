@@ -1,3 +1,5 @@
+// Static Table
+
 import { test, expect, Locator } from '@playwright/test';
 test.only("static web table",async({page})=>
 {
