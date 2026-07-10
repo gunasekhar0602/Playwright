@@ -1,11 +1,13 @@
+// check boxes
+
 import {test,expect,Locator} from'@playwright/test'
 test('Checkbox',async({page})=>
 {
     await page.goto('https://testautomationpractice.blogspot.com/');
 
     // 1)selecting particular checkbox
-    const sundaycheckbox=page.locator('//input[@id="monday"]')
-    await sundaycheckbox.check()
+    const mondaycheckbox=page.locator('//input[@id="monday"]')
+    await mondaycheckbox.check()
 
 // OR
 
