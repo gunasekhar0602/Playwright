@@ -1,3 +1,5 @@
+// input box
+
 import{test,expect,Locator} from'@playwright/test'
 
 test('inputbox',async({page})=>
