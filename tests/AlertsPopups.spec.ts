@@ -6,6 +6,7 @@
 // 2) However, you can register a dialog handler before the action that triggers the dialog to either
 // dialog.accept() or dialog.dismiss() it.
 
+// Simple alert
 import {test, expect, Locator} from "@playwright/test";
 test("Simple Dialog", async ({page})=>
 {
@@ -26,6 +27,8 @@ test("Simple Dialog", async ({page})=>
     await page. locator("#alertBtn"). click();
     await page.waitForTimeout (5000);
 })
+
+
 
 
 
