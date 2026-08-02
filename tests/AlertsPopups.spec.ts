@@ -31,7 +31,7 @@ test("Simple Dialog", async ({page})=>
 
 
 
-
+// Confirmation alert
 test("Confirmation Dialog",async ({page})=>
 {
     await page.goto('https://testautomationpractice.blogspot.com/');
@@ -67,7 +67,7 @@ test("Confirmation Dialog",async ({page})=>
 
 
 
-
+// Prompt alert
 test.only( "Prompt Dialog",async ({page}) =>
 {
     await page.goto('https://testautomationpractice.blogspot.com/');
