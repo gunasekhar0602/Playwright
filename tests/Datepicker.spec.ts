@@ -74,7 +74,7 @@ test("datepicker",async({page})=>
     await page.goto("https://testautomationpractice.blogspot.com/"); // Navigate to page
     const dateInput:Locator=page.locator('#datepicker'); // Locate the Dataepicker element
     expect (dateInput).toBeVisible();
-await dateInput.click();    // opens the date picker
+    await dateInput.click();    // opens the date picker
 
 //select target date 
 const year='2026'; const month='June'; const date='15';
