@@ -1,4 +1,5 @@
 import {test, expect, Locator, Page} from "@playwright/test"
+
 // this function should able to select both past and future date
 async function selectDate(tYear:string,tMonth:string,tdate:string,page:Page,isFuture:boolean)
 {            // Selecting Page fixture for await
@@ -7,6 +8,7 @@ async function selectDate(tYear:string,tMonth:string,tdate:string,page:Page,isFu
         // Locating and capturing the values of current month and year.
         const currentMonth=await page.locator("//span[@class='ui-datepicker-month']").textContent();
         const currentYear=await page.locator("//span[@class='ui-datepicker-year']").textContent();
+        
         // If both currentMonth,month && currentYear,year are same will break the loop
         if(currentMonth=== tYear && currentYear===tMonth)
         {
@@ -18,8 +20,7 @@ async function selectDate(tYear:string,tMonth:string,tdate:string,page:Page,isFu
         }
         else
         {
-        
-        await page.locator("//a[@title='Prev']").click(); ///* // Past //clo next button locator
+        await page.locator("//a[@title='Prev']").click();  // Past //click on previous button locator
         }
         
     }
