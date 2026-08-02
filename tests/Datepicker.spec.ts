@@ -68,7 +68,7 @@ await expect(dateInput).toHaveValue(expectedDate) // assertion
 
 
 
-
+// Date Picker
 test("datepicker",async({page})=>
 {
     await page.goto("https://testautomationpractice.blogspot.com/"); // Navigate to page
