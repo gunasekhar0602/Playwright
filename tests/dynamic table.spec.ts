@@ -11,6 +11,7 @@ test("Verify Chrome CPU load in dynamic table", async({page}) =>
     const rows:Locator[]=await table.locator("tr").all();
     console.log( "Number of rows in a table:", rows. length); 
     expect (rows). toHaveLength(4);
+    
 //Step 1: For Chrome process get value of CPU load.
 // Read each row o check Chrome presence
     let cpuLoad='';
