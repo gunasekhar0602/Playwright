@@ -78,6 +78,7 @@ test("datepicker",async({page})=>
 
 //select target date 
 const year='2026'; const month='June'; const date='15';
+    
 while(true)
 {
     // Locating and capturing the values of current month and year. 
@@ -98,11 +99,13 @@ while(true)
 }
 // locating and Capturing all dates in array formate
 const allDates=await page.locator(".ui-datepicker-calendar td").all();
+    
 // From for loop we will extracgt the inner text of all the date elements
 for(let dt of allDates)
 {
     // create a variable to capture the inner text of date elements
     const datetext=await dt.innerText();
+    
     // If both datetext and date are same means click on the dt and break the loop
     if(datetext===date)
     {
