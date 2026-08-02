@@ -11,8 +11,7 @@ test.only("frames demo", async ({page})=>
     await page.goto('https://ui.vision/demo/webtest/frames/');
     await page.waitForTimeout(5000);
 
-    //total number of frames present on the page.
-    // page.frame() ---> Gives us no of frames in the page
+    //total number of frames present on the page. // page.frame() ---> Gives us no of frames in the page
     const frames=page.frames();
     console.log( "Number of frames:", frames.length);
 
