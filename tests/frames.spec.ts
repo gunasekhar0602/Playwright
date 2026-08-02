@@ -14,8 +14,6 @@ test.only("frames demo", async ({page})=>
     const frames=page.frames();
     console.log( "Number of frames:", frames.length);
 
-
-
     //---- Approach 1: using page.frame() ----
 
     // Caputure the frame
