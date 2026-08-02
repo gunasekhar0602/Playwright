@@ -19,7 +19,6 @@ test.only("frames demo", async ({page})=>
     //---- Approach 1: using page.frame() ----
     // Caputure the frame
     const frame1= page.frame({url:"https://ui.vision/demo/webtest/frames/frame_1.html"});
-
     // Provide a if condition
         if (frame1)
         {
