@@ -17,7 +17,6 @@ test.only("frames demo", async ({page})=>
     console.log( "Number of frames:", frames.length);
 
     //---- Approach 1: using page.frame() ----
-
     // Caputure the frame
     const frame1= page.frame({url:"https://ui.vision/demo/webtest/frames/frame_1.html"});
 
@@ -34,11 +33,8 @@ test.only("frames demo", async ({page})=>
         }
 await page.waitForTimeout(5000);
 
-
 // --- Approach 2: Using frameLocator() ---
-    
     // Capture the element by using frameLocator
-
     const inputbox=page.frameLocator("[src='frame_1.html']").locator("[name= 'mytext1']");
     await inputbox.fill("John");
     await page. waitForTimeout (5000);
