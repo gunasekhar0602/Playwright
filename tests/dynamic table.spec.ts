@@ -1,3 +1,5 @@
+// Dynamic table
+
 import { test, expect, Locator } from '@playwright/test';
 test("Verify Chrome CPU load in dynamic table", async({page}) =>
 {
