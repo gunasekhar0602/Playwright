@@ -127,12 +127,12 @@ test.only("Drag and drop", async ({page}) =>
 // approach 2)- drag and drop method
     await intialele.dragTo(targetele);
     await page.waitForTimeout(5000); 
+});
 
     //Example:
 
     //const source = page.locator('#drag-item');
     //const target = page.locator('#drop-zone');
     //await source.dragTo(target);
-})
 
 
