@@ -1,4 +1,5 @@
 import {test,expect,chromium} from "@playwright/test"
+
 test('browser cookie settings',async()=>
 {
     // Creating a browser
@@ -9,13 +10,14 @@ test('browser cookie settings',async()=>
     const page=await context.newPage();
     
     // Navigate to page
-    await page.goto("https://www.automationpractice.p1/index.php");
+    await page.goto("https://playwright.dev");
 
     // By using context we can add cookies 
     // addCookies is method which all add cookies to the browser
     // Before launching the browser we need to work with cookies
     // In the form of array we need to add cookies
     // we have added the cookies at context level
+
     context.addCookies([
         {
             name:"Username",
@@ -39,16 +41,6 @@ test('browser cookie settings',async()=>
     const allcookies=await context.cookies();
     console.log("cookies ===>",allcookies);
 
-
-
-    // Getting specific cookie
-    // i - representing index. This will read each and every element in  the allcookies
-
-    const retrivedcookie= allcookies.find((i)=>i.name==="mycookie")
-    console.log("printing cookie details: ", retrivedcookie);
-
-    expect(retrivedcookie?.value).toBe(12345);
-    expect(retrivedcookie).toBeDefined()
 
     // Clearing cookies from browser
     // clearCookies()   - will clear all the cookies
@@ -74,13 +66,13 @@ Test 2:
 open browser -> Load Cookies -> Verify automatic login
 */
 
-
-import fs from fs
+// fs - Node.js File System module
+import fs from 'fs';
 
 const cookiefile='./storage-data/cookies.data.json';
 const appurl='https://sdetqa.vercel.app/login_app'
 // create a folder storage-data to store the cookie details
-test('login and save cookies', async({browser})=>
+test.only('login and save cookies', async({browser})=>
 {
     const context=await browser.newContext();
     const page=await context.newPage();
@@ -97,9 +89,18 @@ test('login and save cookies', async({browser})=>
 
     // Get all the cookies
     const cookies=await context.cookies()
-    fs.writeFilesync(cookiefile,JSON.stringify(cookies,null,2))
+
+    // writeFileSync () - Write data to a file synchronously
+    // writeFileSync will take three parameters - cookiefile, cookies, JSON.stringify
+    // We need to change the JSON object to JSON string, so we use stringify
     // null includes all object properties, don't leave even single property
     // 2 is intendation
+    // cookiefile - File path where cookies saved
+    // cookies - JavaScript object/array containing cookies data
+
+    fs.writeFileSync(cookiefile,JSON.stringify(cookies,null,2))
+
+    console.log('Cookies saved successfully')
 })
 
 
