@@ -112,14 +112,17 @@ test.only("login with save cookies", async({browser})=>
     const context=await browser.newContext()
 
     // JSON.parse will change the text data into JSON data
+    // now we need to read the data - readFileSync
     const savedcookies=JSON.parse(fs.readFileSync(cookiefile,'utf8'));
 
+    // we need to add the saved cookies into our context 
     context.addCookies(savedcookies)
 
     const page=await context.newPage();
 
     await page.goto(appurl);
-    expect(page.getByText('Dashboard')).toBeVisible()
+    // now no need to login as we have login with the saved cookies
+    expect(page.getByText('Dashboard')).toBeVisible();
     
 })
 
