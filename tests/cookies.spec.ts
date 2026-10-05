@@ -4,8 +4,10 @@ test('browser cookie settings',async()=>
 {
     // Creating a browser
     const browser=await chromium.launch({headless:false}); // runs in headed mode
+
     // creating Context
     const context= await browser.newContext();
+
     // creating page
     const page=await context.newPage();
     
@@ -13,7 +15,7 @@ test('browser cookie settings',async()=>
     await page.goto("https://playwright.dev");
 
     // By using context we can add cookies 
-    // addCookies is method which all add cookies to the browser
+    // addCookies is method in which we can add cookies to the browser
     // Before launching the browser we need to work with cookies
     // In the form of array we need to add cookies
     // we have added the cookies at context level
@@ -72,7 +74,7 @@ import fs from 'fs';
 const cookiefile='./storage-data/cookies.data.json';
 const appurl='https://sdetqa.vercel.app/login_app'
 // create a folder storage-data to store the cookie details
-test.only('login and save cookies', async({browser})=>
+test('login and save cookies', async({browser})=>
 {
     const context=await browser.newContext();
     const page=await context.newPage();
@@ -101,6 +103,24 @@ test.only('login and save cookies', async({browser})=>
     fs.writeFileSync(cookiefile,JSON.stringify(cookies,null,2))
 
     console.log('Cookies saved successfully')
+
+})
+
+
+test.only("login with save cookies", async({browser})=>
+{
+    const context=await browser.newContext()
+
+    // JSON.parse will change the text data into JSON data
+    const savedcookies=JSON.parse(fs.readFileSync(cookiefile,'utf8'));
+
+    context.addCookies(savedcookies)
+
+    const page=await context.newPage();
+
+    await page.goto(appurl);
+    expect(page.getByText('Dashboard')).toBeVisible()
+    
 })
 
 
