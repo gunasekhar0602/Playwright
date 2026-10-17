@@ -45,8 +45,7 @@ test("Handle frames",async({page})=>
     // frameLocator() is the recommended approach because it directly 
     // locates elements inside an iframe without creating a Frame object
 
-    const textName=page.frameLocator("//frame[@src='frame_1.html']").
-                                                locator("//input[@name='mytext1']");
+    const textName=page.frameLocator("//frame[@src='frame_1.html']").locator("//input[@name='mytext1']");
     await textName.fill('Apple');
 })
 
