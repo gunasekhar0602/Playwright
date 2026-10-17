@@ -1,4 +1,4 @@
-import {test as base,expect,Page} from 'playwright/test'
+import {test as base,expect,Page} from '@playwright/test'
 
 // define/create the type of the fixture by type keyword
 // here loogeduser is the type of fixture
