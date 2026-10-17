@@ -1,7 +1,6 @@
 import{test,expect,Locator}from'@playwright/test'
-test('Flacky test', async ({ page,context}) => {
-    
-    context.tracing.start({screenshots:true,snapshots:true});
+test('Flacky test', async ({ page}) => {
+
     await page.goto('https://www.demoblaze.com/index.html');
 
     await page.getByRole('link', { name: 'Log in' }).click();
@@ -13,5 +12,4 @@ test('Flacky test', async ({ page,context}) => {
     await page.waitForTimeout(5000)
     await page.locator("//a[@id='logout2']").click();
 
-    context.tracing.stop({path:'trace.zip'});
 });

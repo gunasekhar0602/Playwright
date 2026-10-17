@@ -7,8 +7,8 @@
 // dialog.accept() or dialog.dismiss() it.
 
 // Simple alert
-import {test, expect, Locator} from "@playwright/test";
-test("Simple Dialog", async ({page})=>
+import {test,expect,Locator, chromium} from "@playwright/test";
+test.only("Simple Dialog", async ({page})=>
 {
     await page.goto('https://testautomationpractice.blogspot.com/');
 
@@ -68,7 +68,7 @@ test("Confirmation Dialog",async ({page})=>
 
 
 // Prompt alert
-test.only( "Prompt Dialog",async ({page}) =>
+test( "Prompt Dialog",async ({page}) =>
 {
     await page.goto('https://testautomationpractice.blogspot.com/');
 // Register a dialog handler
@@ -96,4 +96,35 @@ test.only( "Prompt Dialog",async ({page}) =>
 
     await expect (page. locator ("#demo")).toHaveText ("Hello John! How are you today?"); 
     await page. waitForTimeout (5000);
+})
+
+
+
+
+// Auth Popup - need username and password for handle this pop up
+
+test('Auth popup',async({browser})=>
+{
+    const context=await browser.newContext(
+        {
+            httpCredentials:
+            {
+                username:"admin",
+                password:"admin"
+            }
+        }
+    );
+    const page=await context.newPage();
+
+    // not a best method to pass the admin and passowrd in the URL
+    // admin:admin ---> username:password
+    // await page.goto('https://admin:admin@the-internet.herokuapp.com/basic_auth');
+
+
+    // Navigate to URL (without credentials in the URL)
+    await page.goto('https://the-internet.herokuapp.com/basic_auth');
+
+    // verify successful authentication
+    await expect(page.locator('text=Congratulations')).toBeVisible();
+    await page.waitForTimeout(5000);
 })
