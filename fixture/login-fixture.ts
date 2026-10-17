@@ -20,4 +20,5 @@ export const test=base.extend<loogeduser>(
     }
 })
 
+// we need to export the expect
 export{expect}
