@@ -3,7 +3,7 @@
 if we are using custom fixtures in the test means, we need to mention the fixture file path
 no the playwright/test while import
 
-if we asre using playwright/test means we cannot utilize the custom fixtures
+if we are using playwright/test means we cannot utilize the custom fixtures
  */
 
 
