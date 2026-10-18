@@ -1,13 +1,3 @@
-//1. Mouse Hover – hover()
-
-//Purpose:
-// To simulate a mouse hover over an element (useful for revealing dropdowns or tooltips).
-
-//Syntax:
-// await page.locator('selector').hover();
-
-//Example:
-// await page.locator('#menu').hover();
 
 import{test,expect,Locator} from'@playwright/test'
 test("Mouse Hover", async ({page}) =>
@@ -30,18 +20,6 @@ test("Mouse Hover", async ({page}) =>
 })
 
 
-
-//2. Right Click – click({ button: 'right' })
-
-//Purpose: 
-// To simulate a right-click on an element.
-
-//Syntax:
-// await page.locator('selector').click({ button: 'right' });
-
-//Example: 
-// await page.locator('#file-icon').click({ button: 'right' });
-
 test("Right click", async ({page}) =>
 {
     // Navigate to the page
@@ -57,21 +35,6 @@ test("Right click", async ({page}) =>
 
     await page. waitForTimeout (5000);
 })
-
-
-
-
-
-//3.Double Click – dblclick()
-
-//Purpose:
-// To simulate a double-click on an element.
-
-//Syntax:
-// await page.locator('selector').dblclick();
-
-//Example:
-// await page.locator('#editable-text').dblclick();
 
 
 test("Double click", async ({page})=>
@@ -92,16 +55,6 @@ test("Double click", async ({page})=>
 	await page.waitForTimeout(5000);
 });
 
-
-
-
-//4. Drag and Drop – dragTo()
- 
-//Purpose:
-// To drag an element and drop it to another target.
- 
-//Syntax:
-// await page.locator('source-selector').dragTo(page.locator('target-selector'));
 
 test.only("Drag and drop", async ({page}) =>
 {
@@ -128,11 +81,5 @@ test.only("Drag and drop", async ({page}) =>
     await intialele.dragTo(targetele);
     await page.waitForTimeout(5000); 
 });
-
-    //Example:
-
-    //const source = page.locator('#drag-item');
-    //const target = page.locator('#drop-zone');
-    //await source.dragTo(target);
 
 
