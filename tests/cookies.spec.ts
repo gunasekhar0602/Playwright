@@ -59,14 +59,9 @@ test('browser cookie settings',async()=>
 
 
 
-/* 
-Test 1:
-Open browser -> Login -> save cookies
 
-
-Test 2:
-open browser -> Load Cookies -> Verify automatic login
-*/
+// Test 1:
+// Open browser -> Login -> save cookies
 
 // fs - Node.js File System module
 import fs from 'fs';
@@ -78,7 +73,6 @@ test('login and save cookies', async({browser})=>
 {
     const context=await browser.newContext();
     const page=await context.newPage();
-
     await page.goto(appurl);
 
     // login
@@ -86,7 +80,6 @@ test('login and save cookies', async({browser})=>
     await page.locator('#password').fill("admin123")
     await page.locator("//input[@value='cookie']").check()
     await page.locator("//button[@type='submit']").click()
-
     expect(page.getByText('Dashboard')).toBeVisible()
 
     // Get all the cookies
@@ -107,6 +100,8 @@ test('login and save cookies', async({browser})=>
 })
 
 
+// Test 2:
+// open browser -> Load Cookies -> Verify automatic login
 test.only("login with save cookies", async({browser})=>
 {
     const context=await browser.newContext()
