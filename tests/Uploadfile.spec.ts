@@ -18,14 +18,14 @@ test.only('Single file upload', async ({page}) =>
 	await page.goto("https://testautomationpractice.blogspot.com/");
 
     // Locate the upload section elememnt and upload the file by providing the path of file
-	await page.locator('#singleFileInput').setInputFiles('uploads/Test1.txt');
+	await page.locator('#singleFileInput').setInputFiles('testdata/TestDocument1.docx');
 
     // Locate the upload button element and click on it
 	await page.locator("//button[text()='Upload Single File']").click();
 
     // Locate the message text element and get the message and put assertion to it
     const msg=await page.locator('#singleFileStatus').textContent(); 
-	expect(msg).toContain('Test1.txt');
+	expect(msg).toContain('TestDocument1.docx');
 	console.log("upload succesfull.....");
 	await page.waitForTimeout (5000);
 });
@@ -47,16 +47,16 @@ test.only('Multiple files upload', async({page})=>
 	await page.goto("https://testautomationpractice.blogspot.com/");
 
 	// Locate the upload section elememnt and upload the file by providing the path of file in array
-	await page.locator('#multipleFilesInput').setInputFiles(['uploads/testfile1.pdf',
-	                                                         'uploads/testfile2.pdf'])
+	await page.locator('#multipleFilesInput').setInputFiles(['testdata/TestDocument1.docx',
+	                                                         'testdata/TestDocument2.docx'])
 
 	// Locate the upload button element and click on it													 
 	await page.locator("//button[(text()='Upload Multiple Files')]").click();
 
 	// Locate the message text element and get the message and put assertion to it
 	const msg=await page.locator('#multipleFilesStatus').textContent();
-	expect(msg).toContain("testfile1.pdf");
-	expect(msg).toContain("testfile2.pdf");
+	expect(msg).toContain("TestDocument1.docx");
+	expect(msg).toContain("TestDocument2.docx");
 	console.log("files uploaded....")
 	console.log(msg);
 	await page.waitForTimeout(5000);
